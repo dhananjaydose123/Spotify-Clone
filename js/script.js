@@ -80,7 +80,7 @@ const playMusic = (track, pause = false) => {
 }
 
 async function displayAlbum() {
-    let a = await fetch(`/songs/`)
+    let a = await fetch(`songs/`)
     let responce = await a.text()
     let div = document.createElement("div")
     div.innerHTML = responce;
@@ -96,7 +96,7 @@ async function displayAlbum() {
             let folder = e.href.split("/").slice(-2)[0]
 
             // Get the meta data of the folder
-            let a = await fetch(`/songs/${folder}/info.json`)
+            let a = await fetch(`songs/${folder}/info.json`)
             let responce = await a.json()
             console.log(responce);
 
@@ -110,7 +110,7 @@ async function displayAlbum() {
                                     stroke-linejoin="round" />
                             </svg>
                         </div>
-                        <img src="/songs/${folder}/cover.jpg" alt="img">
+                        <img src="songs/${folder}/cover.jpg" alt="img">
                         <h2>${responce.title}</h2>
                         <p>${responce.description}</p>
                     </div>`
