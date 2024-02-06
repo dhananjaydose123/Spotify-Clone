@@ -18,7 +18,7 @@ function secondsToMinutesSeconds(seconds) {
 }
 async function getSongs(folder) {
     currFolder = folder
-    let a = await fetch(`${folder}/`)
+    let a = await fetch(`/${folder}/`)
     let responce = await a.text()
     let div = document.createElement("div")
     div.innerHTML = responce
@@ -92,11 +92,11 @@ async function displayAlbum() {
     for (let index = 0; index < array.length; index++) {
         const e = array[index];
 
-        if (e.href.includes("/songs")) {
+        if (e.href.includes("/songs/") && !e.href.includes(".htaccess")) {
             let folder = e.href.split("/").slice(-2)[0]
 
             // Get the meta data of the folder
-            let a = await fetch(`${folder}/info.json`)
+            let a = await fetch(`/sngs/${folder}/info.json`)
             let responce = await a.json()
             console.log(responce);
 
